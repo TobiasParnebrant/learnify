@@ -1,0 +1,15 @@
+C:\Users\Tobias Parnebrant\.vscode\Repos\learnify\Infrastructure\bin\Debug\net5.0\Infrastructure.deps.json
+C:\Users\Tobias Parnebrant\.vscode\Repos\learnify\Infrastructure\bin\Debug\net5.0\Infrastructure.dll
+C:\Users\Tobias Parnebrant\.vscode\Repos\learnify\Infrastructure\bin\Debug\net5.0\ref\Infrastructure.dll
+C:\Users\Tobias Parnebrant\.vscode\Repos\learnify\Infrastructure\bin\Debug\net5.0\Infrastructure.pdb
+C:\Users\Tobias Parnebrant\.vscode\Repos\learnify\Infrastructure\bin\Debug\net5.0\Entity.dll
+C:\Users\Tobias Parnebrant\.vscode\Repos\learnify\Infrastructure\bin\Debug\net5.0\Entity.pdb
+C:\Users\Tobias Parnebrant\.vscode\Repos\learnify\Infrastructure\obj\Debug\net5.0\Infrastructure.csprojAssemblyReference.cache
+C:\Users\Tobias Parnebrant\.vscode\Repos\learnify\Infrastructure\obj\Debug\net5.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tobias Parnebrant\.vscode\Repos\learnify\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Tobias Parnebrant\.vscode\Repos\learnify\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfo.cs
+C:\Users\Tobias Parnebrant\.vscode\Repos\learnify\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Tobias Parnebrant\.vscode\Repos\learnify\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CopyComplete
+C:\Users\Tobias Parnebrant\.vscode\Repos\learnify\Infrastructure\obj\Debug\net5.0\Infrastructure.dll
+C:\Users\Tobias Parnebrant\.vscode\Repos\learnify\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
+C:\Users\Tobias Parnebrant\.vscode\Repos\learnify\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
