@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Infrastructure\\Infrastructure.csproj": {}
+    "C:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Entity\\Entity.csproj": {
+    "C:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Entity\\Entity.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Entity\\Entity.csproj",
+        "projectUniqueName": "C:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Entity\\Entity.csproj",
         "projectName": "Entity",
-        "projectPath": "c:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Entity\\Entity.csproj",
+        "projectPath": "C:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Entity\\Entity.csproj",
         "packagesPath": "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Entity\\obj\\",
+        "outputPath": "C:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Entity\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Tobias Parnebrant\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -58,14 +58,14 @@
         }
       }
     },
-    "c:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "c:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "C:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Tobias Parnebrant\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -75,14 +75,15 @@
           "net5.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "c:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Entity\\Entity.csproj": {
-                "projectPath": "c:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Entity\\Entity.csproj"
+              "C:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Entity\\Entity.csproj": {
+                "projectPath": "C:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Entity\\Entity.csproj"
               }
             }
           }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GT/tBPdFBriJub6apAjvPi/wu0dLucHHBnHFSzp0NBfpIQKPsCEELob/tD1AdT+KJ29VwHfCGc66NHAIU7tLjw==",
+  "dgSpecHash": "L0jLjxJAVrUzaWI7ow6DHVmpz6JYt0iD3TuFnpOD/Imuw55tPhOeZiQ/MAf9yUS/Fb5Pb2YP8bUAAU7gMJkr1Q==",
   "success": true,
-  "projectFilePath": "c:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\microsoft.data.sqlite.core\\5.0.17\\microsoft.data.sqlite.core.5.0.17.nupkg.sha512",
     "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\3.1.6\\microsoft.dotnet.platformabstractions.3.1.6.nupkg.sha512",
