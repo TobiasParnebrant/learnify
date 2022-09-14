@@ -30,6 +30,7 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddScoped<ICourseRepository, CourseRepository>();
             services.AddControllers();
             services.AddDbContext<Infrastructure.StoreContext>(x =>
             {
