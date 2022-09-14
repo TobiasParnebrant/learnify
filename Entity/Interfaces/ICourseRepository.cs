@@ -1,14 +1,13 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Entity.Interfaces 
+namespace Entity.Interfaces
 {
-   public interface ICourseRepository
-   {     
-        Task<Course> GetCourseByIdAsync(int id);
+    public interface ICourseRepository
+    {
+         Task<Course> GetCourseByIdAsync(Guid id);
 
-        Task<IReadOnlyList<Course>> GetCoursesAsync();
-    
-   }
-
+         Task<IReadOnlyList<Course>> GetCoursesAsync();
+    }
 }

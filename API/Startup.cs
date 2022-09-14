@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Entity.Interfaces;
+using Infrastructure;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +32,7 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddScoped<ICourseRepository, CourseRepository>();
             services.AddControllers();
             services.AddDbContext<Infrastructure.StoreContext>(x =>
             {
