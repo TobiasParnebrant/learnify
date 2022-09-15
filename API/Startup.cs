@@ -33,6 +33,7 @@ namespace API
         {
 
             services.AddScoped<ICourseRepository, CourseRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddControllers();
             services.AddDbContext<Infrastructure.StoreContext>(x =>
             {
