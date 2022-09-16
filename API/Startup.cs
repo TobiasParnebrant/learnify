@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Entity.Interfaces;
+using Infrastructure;
+using API.Helpers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,6 +34,10 @@ namespace API
         {
 
             services.AddScoped<ICourseRepository, CourseRepository>();
+
+            services.AddAutoMapper(typeof(MappingProfiles));
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+
             services.AddControllers();
             services.AddDbContext<Infrastructure.StoreContext>(x =>
             {

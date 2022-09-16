@@ -15,6 +15,19 @@ namespace Infrastructure
         {
             try
             {
+                if (!context.Category.Any())
+                {
+                    var categoryData = File.ReadAllText("../Infrastructure/SeedData/categories.json");
+                    var Category = JsonSerializer.Deserialize<List<Category>>(categoryData);
+
+                    foreach (var item in Category)
+                    {
+                        context.Category.Add(item);
+                    }
+
+                    await context.SaveChangesAsync();
+                }
+
                 if (!context.Courses.Any())
                 {
                     var courseData = File.ReadAllText("../Infrastructure/SeedData/courses.json");
@@ -23,6 +36,32 @@ namespace Infrastructure
                     foreach (var item in courses)
                     {
                         context.Courses.Add(item);
+                    }
+
+                    await context.SaveChangesAsync();
+                }
+
+                  if (!context.Learnings.Any())
+                {
+                    var learningData = File.ReadAllText("../Infrastructure/SeedData/learnings.json");
+                    var learnings = JsonSerializer.Deserialize<List<Learning>>(learningData);
+
+                    foreach (var item in learnings)
+                    {
+                        context.Learnings.Add(item);
+                    }
+
+                    await context.SaveChangesAsync();
+                }
+
+                if (!context.Requirements.Any())
+                {
+                    var requirementData = File.ReadAllText("../Infrastructure/SeedData/requirements.json");
+                    var requirements = JsonSerializer.Deserialize<List<Requirement>>(requirementData);
+
+                    foreach (var item in requirements)
+                    {
+                        context.Requirements.Add(item);
                     }
 
                     await context.SaveChangesAsync();
