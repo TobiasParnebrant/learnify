@@ -34,8 +34,10 @@ namespace API
         {
 
             services.AddScoped<ICourseRepository, CourseRepository>();
+
             services.AddAutoMapper(typeof(MappingProfiles));
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+
             services.AddControllers();
             services.AddDbContext<Infrastructure.StoreContext>(x =>
             {
