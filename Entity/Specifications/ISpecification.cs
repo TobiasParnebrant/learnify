@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace Entity.Specifications
 {
-    public class ISpecification<T>
+    public interface ISpecification<T>
     {
         Expression<Func<T, bool>> Criteria {get;}
 
