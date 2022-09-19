@@ -2,14 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using API.Dto;
+using API.ErrorResponse;
+using API.Helpers;
 using AutoMapper;
 using Entity;
 using Entity.Interfaces;
 using Entity.Specifications;
-using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-
 
 namespace API.Controllers
 {
@@ -27,21 +26,32 @@ namespace API.Controllers
 
         [HttpGet]
 
-        public async Task<ActionResult<IReadOnlyList<CourseDto>>> GetCourses(string sort)
+        public async Task<ActionResult<Pagination<CourseDto>>> GetCourses([FromQuery] CourseParams courseParams)
         {
-            var spec = new CoursesWithCategoriesSpecification(sort);
+            var spec = new CoursesWithCategoriesSpecification(courseParams);
+
+            var countSpec = new CoursesFiltersCountSpecification(courseParams);
+
+            var total = await _repository.CountResultAsync(countSpec);
 
             var courses = await _repository.ListWithSpec(spec);
-            return Ok(_mapper.Map<IReadOnlyList<Course>, IReadOnlyList<CourseDto>>(courses));
+
+            if (courses == null) return NotFound(new ApiResponse(404));
+
+            var data = _mapper.Map<IReadOnlyList<Course>, IReadOnlyList<CourseDto>>(courses);
+
+            return Ok(new Pagination<CourseDto>(courseParams.PageIndex, courseParams.PageSize, total, data));
         }
 
         [HttpGet("{id}")]
 
         public async Task<ActionResult<CourseDto>> GetCourse(Guid id)
         {
-            var spec = new CoursesWithCategoriesSpecification(id);
+             var spec = new CoursesWithCategoriesSpecification(id);
 
             var course = await _repository.GetEntityWithSpec(spec);
+
+            if (course == null) return NotFound(new ApiResponse(404));
 
             return _mapper.Map<Course, CourseDto>(course);
 
