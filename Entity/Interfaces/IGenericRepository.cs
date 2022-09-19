@@ -14,6 +14,6 @@ namespace Entity.Interfaces
 
           Task<IReadOnlyList<T>> ListWithSpec(ISpecification<T> spec);
 
-          
+          Task<int> CountResultAsync(ISpecification<T> spec);
     }
 }
