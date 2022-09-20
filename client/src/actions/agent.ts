@@ -1,5 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 import { Category } from "../models/category";
+import { Course } from "../models/course";
 import { PaginatedCourse } from "../models/PaginatedCourse";
 
 
@@ -16,11 +17,13 @@ const request = {
 };
 
 const Courses = {
-    list: () => request.get<PaginatedCourse>("/courses")
-}
+    list: () => request.get<PaginatedCourse>("/courses"),
+    getById: (id: string) => request.get<Course>(`/courses/${id}`),
+};
 
 const Categories = {
     list: () => request.get<Category[]>("/categories"),
+    getCategory: (id: number) => request.get<Category>(`/categories/${id}`),
   };
   
   const agent = {
