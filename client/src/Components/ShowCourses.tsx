@@ -3,6 +3,7 @@ import * as FaIcons from "react-icons/fa"
 import { Card, Col } from "antd";
 import { Course } from "../models/course";
 import { Link } from "react-router-dom";
+import agent from "../actions/agent";
 
 interface props{
     course: Course
@@ -44,24 +45,34 @@ const ShowCourses = ({course} : props) => {
             }
             return options;
           };
+
+          const addToCart = (courseId: string) => {
+            agent.Basket.addItem(courseId).catch((error) => console.log(error));
+          }
         
     return (
     <>
       <Col className="gutter-row" span={spanVal}>
-        <Link to={`/course/${course.id}`}>
         <Card
           hoverable
           cover={<img width="100%" alt="course-cover" src={course.image} />}
         >
+          <Link to={`/course/${course.id}`}>
           <div className="course__title">{course.title}</div>
+          </Link>
           <div className="course__instructor">{course.instructor}</div>
           <div className="course__rating">
             {course.rating}
             <span>{showStars(course.rating)}</span>
           </div>
+          <div className="course__bottom">
           <div className="course__price">{course.price}</div>
+          <div onClick={() => addToCart(course.id)} 
+          className="course__bottom__cart">
+            Add to Cart</div>
+          </div>
+          
         </Card>
-        </Link>
       </Col>
     </>
   );
