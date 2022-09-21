@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from "axios";
+import { Basket } from "../models/basket";
 import { Category } from "../models/category";
 import { Course } from "../models/course";
 import { PaginatedCourse } from "../models/PaginatedCourse";
@@ -28,10 +29,10 @@ const Categories = {
     getCategory: (id: number) => request.get<Category>(`/categories/${id}`),
   };
 
-  const Basket = {
-    get: () => request.get("basket"),
+  const Baskets = {
+    get: () => request.get<Basket>("basket"),
     addItem: (courseId: string) =>
-      request.post(`basket?courseId=${courseId}`, {}),
+      request.post<Basket> (`basket?courseId=${courseId}`, {}),
     removeItem: (courseId: string) => 
     request.del(`basket?courseId=${courseId}`),
   };
@@ -39,7 +40,7 @@ const Categories = {
   const agent = {
     Courses,
     Categories,
-    Basket
+    Baskets,
   };
 
 export default agent;
