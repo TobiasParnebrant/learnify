@@ -37,12 +37,9 @@ namespace API
         {
 
             services.AddScoped<ICourseRepository, CourseRepository>();
-
             services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
-
             services.AddAutoMapper(typeof(MappingProfiles));
             services.AddScoped<ICategoryRepository, CategoryRepository>();
-
             services.AddControllers();
             services.AddDbContext<Infrastructure.StoreContext>(x =>
             {
@@ -54,7 +51,7 @@ namespace API
             {
                 opt.AddPolicy("CorsPolicy", policy => 
                 {
-                    policy.AllowAnyHeader().AllowAnyMethod()
+                    policy.AllowAnyHeader().AllowAnyMethod().AllowCredentials()
                     .WithOrigins("http://localhost:3000");
                 });
             });
