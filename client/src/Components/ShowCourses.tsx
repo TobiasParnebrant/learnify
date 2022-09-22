@@ -3,8 +3,9 @@ import { Card, Col } from "antd";
 import * as FaIcons from "react-icons/fa";
 import { Course } from "../models/course";
 import { Link } from "react-router-dom";
-import agent from "../actions/agent";
-import { useStoreContext } from "../context/StoreContext";
+import { useAppDispatch, useAppSelector } from "../redux/store/configureStore";
+import { addBasketItemAsync } from "../redux/slice/basketSlice";
+
 
 interface Props {
 	course: Course;
@@ -13,7 +14,8 @@ interface Props {
 const ShowCourses = ({ course }: Props) => {
 	const [spanVal, setSpanVal] = useState<number>();
 
-	const { setBasket, basket } = useStoreContext();
+	const {basket} = useAppSelector(state => state.basket)
+	const  dispatch = useAppDispatch()
 
 	const checkWidth = (): void => {
 		if (window.innerWidth > 1024) {
@@ -25,11 +27,7 @@ const ShowCourses = ({ course }: Props) => {
 		}
 	};
 
-	const addToCart = (courseId: string) => {
-		agent.Baskets.addItem(courseId)
-			.then((response) => setBasket(response))
-			.catch((error) => console.log(error));
-	};
+	
 
 	useLayoutEffect(() => {
 		window.addEventListener("resize", checkWidth);
@@ -74,9 +72,7 @@ const ShowCourses = ({ course }: Props) => {
 							</Link>
 						) : (
 							<div
-								onClick={() => {
-									addToCart(course.id);
-								}}
+								onClick={() => dispatch(addBasketItemAsync({courseId: course.id}))}
 								className="course__bottom__cart"
 							>
 								Add to cart

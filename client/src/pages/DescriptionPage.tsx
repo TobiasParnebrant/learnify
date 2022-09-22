@@ -1,29 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { Course, Learning, Requirement } from "../models/course";
+import React, { useEffect } from "react";
+import { Learning, Requirement } from "../models/course";
 import { useParams } from "react-router";
-import agent from "../actions/agent";
-import { useStoreContext } from "../context/StoreContext";
 import { Link } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../redux/store/configureStore";
+import { addBasketItemAsync } from "../redux/slice/basketSlice";
+import { courseSelector, getCourseAsync } from "../redux/slice/courseSlice";
 
 const DescriptionPage = () => {
-  const [course, setCourse] = useState<Course>();
   const { id } = useParams<{ id: string }>();
+  const course = useAppSelector((state) => 
+    courseSelector.selectById(state, id)
+  )
 
-  const { basket, setBasket } = useStoreContext();
-
-  const addToCart = (courseId: string) => {
-    agent.Baskets.addItem(courseId)
-      .then((response) => setBasket(response))
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  const { basket } = useAppSelector((state) => state.basket);
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
-    agent.Courses.getById(id).then((response) => {
-      setCourse(response);
-    });
-  }, [id]);
+    if(!course) dispatch(getCourseAsync({courseId: id}))
+  }, [id, dispatch, course]);
 
   const getParsedDate = (strDate: any) => {
     let strSplitDate = String(strDate).split(" ");
@@ -160,7 +154,7 @@ const DescriptionPage = () => {
               </Link>
             ) : (
               <div
-                onClick={() => addToCart(course!.id)}
+                onClick={() => dispatch(addBasketItemAsync({courseId: course!.id}))}
                 className="description-page__sidebar__box__button--cart"
               >
                 Add to cart
