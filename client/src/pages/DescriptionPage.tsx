@@ -4,12 +4,12 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/store/configureStore";
 import { addBasketItemAsync } from "../redux/slice/basketSlice";
-import { courseSelector, getCourseAsync } from "../redux/slice/courseSlice";
+import { coursesSelector, getCourseAsync } from "../redux/slice/courseSlice";
 
 const DescriptionPage = () => {
   const { id } = useParams<{ id: string }>();
   const course = useAppSelector((state) => 
-    courseSelector.selectById(state, id)
+    coursesSelector.selectById(state, id)
   )
 
   const { basket } = useAppSelector((state) => state.basket);
