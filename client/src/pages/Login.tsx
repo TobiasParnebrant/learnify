@@ -1,18 +1,22 @@
-import React from "react";
-import { increment } from "../redux/slice/loginSlice";
-import { useAppDispatch, useAppSelector } from "../redux/store/configureStore";
+import { Content } from 'antd/lib/layout/layout';
+import { useState } from 'react';
+import RegisterComponent from '../Components/Register';
+import Signin from '../Components/Signin';
 
 const LoginPage = () => {
-  const dispatch = useAppDispatch();
-  const { visits } = useAppSelector((state) => state.login);
+  const [register, setRegister] = useState(false);
+
+  const toggleRegister = () => setRegister(!register);
 
   return (
-    <>
-      <h1>Number of Visits: {visits}</h1>
-      <button onClick={() => dispatch(increment(5))}>Increment</button>
-    </>
+    <Content className="log-in">
+      {register ? (
+        <RegisterComponent toggleRegister={toggleRegister} />
+      ) : (
+        <Signin toggleRegister={toggleRegister} />
+      )}
+    </Content>
   );
 };
 
-export default LoginPage;
-  
+export default LoginPage;  
