@@ -1,31 +1,38 @@
-using System;
 using System.Reflection;
 using Entity;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure
 {
-    public class StoreContext : DbContext
+    public class StoreContext : IdentityDbContext<User>
     {
-        public StoreContext(DbContextOptions<StoreContext> options) : base(options)
+        public StoreContext(DbContextOptions options) :
+            base(options)
         {
         }
 
-        public DbSet<Course> Courses {get; set;}
+        public DbSet<Course> Courses { get; set; }
 
-        public DbSet<Category> Category {get; set;}
+        public DbSet<Category> Category { get; set; }
 
-        public DbSet<Requirement> Requirements {get; set;}
+        public DbSet<Requirement> Requirements { get; set; }
 
-        public DbSet<Learning> Learnings {get; set;}
+        public DbSet<Learning> Learnings { get; set; }
 
         public DbSet<Basket> Basket {get; set;}
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-          base.OnModelCreating(builder);
-          builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            base.OnModelCreating(builder);
+            builder
+                .ApplyConfigurationsFromAssembly(Assembly
+                    .GetExecutingAssembly());
+            builder.Entity<IdentityRole>()
+            .HasData(
+                new IdentityRole{Name = "Student", NormalizedName = "STUDENT"},
+                new IdentityRole{Name = "Instructor", NormalizedName = "INSTRUCTOR"});
         }
-        
     }
 }
