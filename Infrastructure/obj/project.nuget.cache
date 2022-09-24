@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "4bbBkJNgvbmUYwtHa9kkhjU4aWFx8h+iGVJ+bzVDr/KseGqYCY0OrdxCVRK278quuoLfstHnksdv7VLz6XLVJQ==",
+  "dgSpecHash": "inCfGppURVDe0LBLpd8uQEu8NOxtj6t1HBYYGzmLapKkn9dpcyiTXUwt2PBQ7UnP/OQEjLKwZqoAZ68Mzq695g==",
   "success": true,
   "projectFilePath": "C:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.6\\microsoft.aspnetcore.cryptography.internal.5.0.6.nupkg.sha512",
     "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.6\\microsoft.aspnetcore.cryptography.keyderivation.5.0.6.nupkg.sha512",
     "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\5.0.6\\microsoft.aspnetcore.identity.entityframeworkcore.5.0.6.nupkg.sha512",
+    "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\microsoft.data.sqlite.core\\5.0.17\\microsoft.data.sqlite.core.5.0.17.nupkg.sha512",
     "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\3.1.6\\microsoft.dotnet.platformabstractions.3.1.6.nupkg.sha512",
     "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.17\\microsoft.entityframeworkcore.5.0.17.nupkg.sha512",
@@ -27,6 +28,9 @@
     "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
     "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.15.1\\microsoft.identitymodel.jsonwebtokens.6.15.1.nupkg.sha512",
+    "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\microsoft.identitymodel.logging\\6.15.1\\microsoft.identitymodel.logging.6.15.1.nupkg.sha512",
+    "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.15.1\\microsoft.identitymodel.tokens.6.15.1.nupkg.sha512",
     "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.4\\sqlitepclraw.bundle_e_sqlite3.2.0.4.nupkg.sha512",
     "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\sqlitepclraw.core\\2.0.4\\sqlitepclraw.core.2.0.4.nupkg.sha512",
     "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.4\\sqlitepclraw.lib.e_sqlite3.2.0.4.nupkg.sha512",
@@ -34,7 +38,9 @@
     "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
     "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.1\\system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512",
-    "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
+    "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.15.1\\system.identitymodel.tokens.jwt.6.15.1.nupkg.sha512",
+    "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\Tobias Parnebrant\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,6 +1,7 @@
 using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using API.ErrorResponse;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
@@ -13,17 +14,25 @@ namespace API.Controllers
             _context = context;
         }
 
-       [HttpGet("notfound")]
+        [HttpGet("authcheck")]
+        [Authorize]
+
+        public ActionResult<string> CheckAuthorization()
+        {
+            return "You are authorized";
+        }
+
+        [HttpGet("notfound")]
         public ActionResult NotFoundMethod()
         {
             var category = _context.Category.Find(42);
 
-            if (category == null) return NotFound( new ApiResponse(404) );
+            if (category == null) return NotFound(new ApiResponse(404));
 
             return Ok();
         }
 
-          [HttpGet("servererror")]
+        [HttpGet("servererror")]
         public ActionResult ServerErrorMethod()
         {
             var category = _context.Category.Find(42);
@@ -31,13 +40,13 @@ namespace API.Controllers
             return Ok(category.ToString());
         }
 
-          [HttpGet("badrequest")]
+        [HttpGet("badrequest")]
         public ActionResult BadRequestMethod()
         {
-            return BadRequest( new ApiResponse(400) );
+            return BadRequest(new ApiResponse(400));
         }
 
-          [HttpGet("badrequest/{id}")]
+        [HttpGet("badrequest/{id}")]
         public ActionResult BadIdMethod(int id)
         {
             return Ok();
