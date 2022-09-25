@@ -48,7 +48,7 @@ namespace API.Controllers
 
             if (course == null) return NotFound(new ApiResponse(404));
 
-            basket.AddCourseItem(course);
+            basket.AddCourse(course);
 
             var basketResponse = _mapper.Map<Basket, BasketDto>(basket);
 
