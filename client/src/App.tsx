@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
-
 import './sass/main.scss';
 import Navigation from './Components/Navigation';
 import 'antd/dist/antd.css';
