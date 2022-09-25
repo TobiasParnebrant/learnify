@@ -28,6 +28,9 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
+              "C:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Entity\\Entity.csproj": {
+                "projectPath": "C:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Entity\\Entity.csproj"
+              },
               "C:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Infrastructure\\Infrastructure.csproj": {
                 "projectPath": "C:\\Users\\Tobias Parnebrant\\.vscode\\Repos\\learnify\\Infrastructure\\Infrastructure.csproj"
               }
@@ -47,6 +50,10 @@
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
               "version": "[8.1.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -116,6 +123,12 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.6, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -178,6 +191,14 @@
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[5.0.17, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.15.1, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.15.1, )"
             }
           },
           "imports": [

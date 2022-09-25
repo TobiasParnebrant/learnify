@@ -15,20 +15,19 @@ namespace API.Controllers
 {
     public class BasketController : BaseController
     {
-        public StoreContext _context { get; set; }
+        private readonly StoreContext _context;
         private readonly IMapper _mapper;
         public BasketController(StoreContext context, IMapper mapper)
         {
             _mapper = mapper;
             _context = context;
-
         }
 
         [HttpGet]
 
         public async Task<ActionResult<BasketDto>> GetBasket()
         {
-            var basket = await ExtractBasket();
+            var basket = await ExtractBasket(GetClientId());
 
             if (basket == null) return NotFound(new ApiResponse(404));
 
@@ -41,28 +40,31 @@ namespace API.Controllers
 
         public async Task<ActionResult<BasketDto>> AddItemToBasket(Guid courseId)
         {
-            var basket = await ExtractBasket();
+            var basket = await ExtractBasket(GetClientId());
 
             if (basket == null) basket = CreateBasket();
-            var course = await _context.Courses.FindAsync(courseId);
-            if (course == null) return NotFound(new ApiResponse(404));
-            basket.AddCourseItem(course);
 
-            var result = await _context.SaveChangesAsync() > 0;
+            var course = await _context.Courses.FindAsync(courseId);
+
+            if (course == null) return NotFound(new ApiResponse(404));
+
+            basket.AddCourseItem(course);
 
             var basketResponse = _mapper.Map<Basket, BasketDto>(basket);
 
+            var result = await _context.SaveChangesAsync() > 0;
+
             if (result) return basketResponse;
-            return BadRequest(new ApiResponse(404, "Problem saving item to the Basket"));
+
+            return BadRequest(new ApiResponse(400, "Problem saving item to the Basket"));
         }
 
         [HttpDelete]
-
         public async Task<ActionResult> RemoveBasketItem(Guid courseId)
         {
-            var basket = await ExtractBasket();
+            var basket = await ExtractBasket(GetClientId());
 
-            if (basket == null) return NotFound(new ApiResponse(404));
+            if (basket == null) return NotFound();
 
             basket.RemoveCourse(courseId);
 
@@ -75,21 +77,37 @@ namespace API.Controllers
 
         private Basket CreateBasket()
         {
-            var clientId = Guid.NewGuid().ToString();
+            var clientId = User.Identity?.Name;
+            if(string.IsNullOrEmpty(clientId))
+            {
+            clientId = Guid.NewGuid().ToString();
             var options = new CookieOptions { IsEssential = true, Expires = DateTime.Now.AddDays(10) };
             Response.Cookies.Append("clientId", clientId, options);
+            }
             var basket = new Basket { ClientId = clientId };
             _context.Basket.Add(basket);
             return basket;
         }
 
-        private async Task<Basket> ExtractBasket()
+        private async Task<Basket> ExtractBasket(string clientId)
         {
+            if(string.IsNullOrEmpty(clientId))
+            {
+                Response.Cookies.Delete("clientId");
+                return null;
+            }
             return await _context.Basket
                         .Include(b => b.Items)
                         .ThenInclude(i => i.Course)
                         .OrderBy(i => i.Id)
-                        .FirstOrDefaultAsync(x => x.ClientId == Request.Cookies["clientId"]);
+                        .FirstOrDefaultAsync(x => x.ClientId == clientId);
+
         }
+
+        private string GetClientId()
+        {
+            return User.Identity?.Name ?? Request.Cookies["clientId"];
+        }
+
     }
 }
