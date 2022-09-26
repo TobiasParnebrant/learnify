@@ -34,5 +34,7 @@ namespace Entity
 
         public DateTime LastUpdated { get; set; } = DateTime.Now;
 
+        public ICollection<UserCourse> UserCourses { get; set; }
+
     }
 }
