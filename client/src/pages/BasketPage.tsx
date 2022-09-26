@@ -71,8 +71,8 @@ const BasketPage = () => {
 							<div className="basket-page__body__summary__total">
 								$ {total ? total : 0}
 							</div>
-							<Link to="/basket">
-								<div className="basket-page__body__summary__checkout"></div>
+							<Link to="/checkout">
+								<div className="basket-page__body__summary__checkout"> Checkout</div>
 							</Link>
 						</div>
 					)}
