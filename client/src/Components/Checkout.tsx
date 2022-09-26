@@ -46,6 +46,9 @@ import { useAppDispatch, useAppSelector } from "../redux/store/configureStore";
         })
 
         if(paymentResult.paymentIntent?.status === "succeeded") {
+
+          await agent.Users.addCourse();
+
           notification.success({
             message: "Your payment is Successful!"
           });
@@ -105,7 +108,7 @@ import { useAppDispatch, useAppSelector } from "../redux/store/configureStore";
           </Card>
         </div>
         <div className="checkout__summary">
-          <CheckoutSummary />
+          <CheckoutSummary stripe={stripe} handleSubmit={handlePayment} />
         </div>
       </div>
     );
