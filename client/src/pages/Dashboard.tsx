@@ -1,6 +1,38 @@
+import { Row } from "antd";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import ShowCourses from "../Components/ShowCourses";
+import { Course } from "../models/course";
+import { fetchCurrentUser } from "../redux/slice/userSlice";
+import { useAppDispatch, useAppSelector } from "../redux/store/configureStore";
+
 const Dashboard = () => {
-    return <h1>Dashboard</h1>;
-  };
-  
-  export default Dashboard;
+	const { userCourses } = useAppSelector((state) => state.user);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
+
+	return (
+		<div className="dashboard">
+			<div className="dashboard__header">
+				<h1>My Courses</h1>
+			</div>
+			<div className="dashboard__courses">
+				<Row gutter={[48, 32]} />
+				{userCourses.length > 0 ? (
+					userCourses.map((course: Course, index: number) => {
+						return <ShowCourses key={index} course={course} />;
+					})
+				) : (
+					<h1>You have not bought any courses!</h1>
+				)}
+			</div>
+		</div>
+	);
+};
+
+export default Dashboard;
 //Let's register it inside App.tsx. We can copy one from top and replace path with profile and component with Dashboard which will be imported automatically.

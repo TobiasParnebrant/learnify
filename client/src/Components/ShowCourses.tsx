@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/store/configureStore";
 import { addBasketItemAsync } from "../redux/slice/basketSlice";
 
-
 interface Props {
 	course: Course;
 }
@@ -14,8 +13,10 @@ interface Props {
 const ShowCourses = ({ course }: Props) => {
 	const [spanVal, setSpanVal] = useState<number>();
 
-	const {basket} = useAppSelector(state => state.basket)
-	const  dispatch = useAppDispatch()
+	const { basket } = useAppSelector((state) => state.basket);
+	const dispatch = useAppDispatch();
+
+	const { userCourses } = useAppSelector((state) => state.user);
 
 	const checkWidth = (): void => {
 		if (window.innerWidth > 1024) {
@@ -26,8 +27,6 @@ const ShowCourses = ({ course }: Props) => {
 			setSpanVal(12);
 		}
 	};
-
-	
 
 	useLayoutEffect(() => {
 		window.addEventListener("resize", checkWidth);
@@ -48,6 +47,7 @@ const ShowCourses = ({ course }: Props) => {
 		}
 		return options;
 	};
+
 	return (
 		<>
 			<Col className="gutter-row" span={spanVal}>
@@ -65,14 +65,19 @@ const ShowCourses = ({ course }: Props) => {
 					</div>
 					<div className="course__bottom">
 						<div className="course__bottom__price">{course.price}</div>
-						{basket?.items.find((item) => item.courseId === course.id) !==
+						{userCourses?.find((item: Course) => item.id === course.id) !==
 						undefined ? (
+							<div className="course__bottom_cart">Go to Course</div>
+						) : basket?.items.find((item) => item.courseId === course.id) !==
+						  undefined ? (
 							<Link to="/basket">
 								<div className="course__bottom__cart">Go to Cart</div>
 							</Link>
 						) : (
 							<div
-								onClick={() => dispatch(addBasketItemAsync({courseId: course.id}))}
+								onClick={() =>
+									dispatch(addBasketItemAsync({ courseId: course.id }))
+								}
 								className="course__bottom__cart"
 							>
 								Add to cart
