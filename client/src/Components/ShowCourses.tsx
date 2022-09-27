@@ -65,9 +65,10 @@ const ShowCourses = ({ course }: Props) => {
 					</div>
 					<div className="course__bottom">
 						<div className="course__bottom__price">{course.price}</div>
-						{userCourses?.find((item: Course) => item.id === course.id) !==
+
+						{userCourses?.find((item) => item.id === course.id) !==
 						undefined ? (
-							<div className="course__bottom_cart">Go to Course</div>
+							<div className="course__bottom__cart">Go to Course</div>
 						) : basket?.items.find((item) => item.courseId === course.id) !==
 						  undefined ? (
 							<Link to="/basket">
@@ -75,9 +76,9 @@ const ShowCourses = ({ course }: Props) => {
 							</Link>
 						) : (
 							<div
-								onClick={() =>
-									dispatch(addBasketItemAsync({ courseId: course.id }))
-								}
+								onClick={() => {
+									dispatch(addBasketItemAsync({ courseId: course.id }));
+								}}
 								className="course__bottom__cart"
 							>
 								Add to cart
