@@ -20,7 +20,7 @@ namespace Entity
 
         public string Instructor { get; set; }
 
-        public string Image { get; set; }
+        public string Image { get; set; } = "https://learnify-assets.s3.amazonaws.com/Images/learnify.png";
 
         public decimal Rating { get; set; }
 
@@ -29,6 +29,8 @@ namespace Entity
         public ICollection<Learning> Learnings { get; set; }
 
         public int CategoryId { get; set; }
+
+        public bool Published { get; set; } = false;
 
         public Category Category { get; set; }
 
