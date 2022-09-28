@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { notification } from "antd";
-import { accessSync } from "fs";
 import agent from "../../actions/agent";
 import { Course } from "../../models/course";
 import { Login, Register, User } from "../../models/user";
