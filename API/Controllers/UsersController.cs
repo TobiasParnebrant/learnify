@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Dto;
@@ -114,7 +115,8 @@ namespace API.Controllers
          [Authorize]
         [HttpGet("currentUser")]
         public async Task<ActionResult<UserDto>> GetCurrentUser()
-        {
+        {          
+
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
             var basket = await ExtractBasket(User.Identity.Name);
@@ -129,7 +131,29 @@ namespace API.Controllers
                 Courses = courses.Where(x => x.UserId == user.Id).Select(u => u.Course).ToList()
             };
         }
-         
+
+        [Authorize]
+        [HttpPost("addRole")]
+
+        public async Task<ActionResult> addRole()
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            await _userManager.AddToRoleAsync(user, "Instructor");
+
+            return Ok();
+        }
+
+        [Authorize]
+        [HttpGet("unpublishedCourses")]
+
+        public List<Course>  unpublishedCourses()
+        {
+            var courses = _context.Courses.Where(x => x.Instructor == User.Identity.Name).Where(x => x.Published == false).ToList();
+
+            return courses;
+        }
+
         private async Task<Basket> ExtractBasket(string clientId)
         {
             if (string.IsNullOrEmpty(clientId))
