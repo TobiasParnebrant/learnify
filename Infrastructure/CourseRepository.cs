@@ -1,8 +1,11 @@
+
 using System;
+
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Entity;
 using Entity.Interfaces;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure
@@ -29,6 +32,7 @@ namespace Infrastructure
             return await _context.Courses
             .Include(c => c.Category)
             .ToListAsync();
+
         }
     }
 }

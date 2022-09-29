@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -10,4 +11,5 @@ namespace Entity.Interfaces
 
          Task<IReadOnlyList<Course>> GetCoursesAsync();
     }
+
 }
