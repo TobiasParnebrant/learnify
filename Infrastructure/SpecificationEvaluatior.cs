@@ -12,7 +12,7 @@ namespace Infrastructure
 
             if(spec.Criteria != null)
             {
-                query = query.Where(spec.Criteria);
+                query = query.Where(spec.Criteria); // c => c.Price < 10
             }
 
             if(spec.Sort != null)

@@ -16,11 +16,12 @@ namespace Entity.Specifications
             SortMethod(c => c.Title);
             ApplyPagination(courseParams.PageSize, courseParams.PageSize * (courseParams.PageIndex - 1));
 
+
             if(!string.IsNullOrEmpty(courseParams.Sort))
             {
               switch (courseParams.Sort)
               {
-                  case "priceAscending":
+                 case "priceAscending":
                   SortMethod(c => c.Price);
                   break;
                   case "priceDescending":

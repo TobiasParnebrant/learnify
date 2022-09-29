@@ -51,7 +51,7 @@ namespace API.Controllers
 
         public async Task<ActionResult<CourseDto>> GetCourse(Guid id)
         {
-            var spec = new CoursesWithCategoriesSpecification(id);
+             var spec = new CoursesWithCategoriesSpecification(id);
 
             var course = await _repository.GetEntityWithSpec(spec);
 

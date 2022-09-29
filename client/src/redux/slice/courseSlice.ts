@@ -2,57 +2,66 @@ import {
   createAsyncThunk,
   createEntityAdapter,
   createSlice,
-} from '@reduxjs/toolkit'
-import agent from '../../actions/agent'
-import { Course, CourseParams } from '../../models/course'
-import { PaginatedCourse } from '../../models/PaginatedCourse'
-import { RootState } from '../store/configureStore'
+} from "@reduxjs/toolkit";
+import agent from "../../actions/agent";
+import { Course, CourseParams } from "../../models/course";
+import { PaginatedCourse } from "../../models/PaginatedCourse";
+import { RootState } from "../store/configureStore";
 
-const coursesAdapter = createEntityAdapter<Course>()
+
+
+const coursesAdapter = createEntityAdapter<Course>();
 
 function getAxiosParams(courseParams: CourseParams) {
-  const params = new URLSearchParams()
-  params.append('pageIndex', courseParams.pageIndex.toString())
-  params.append('pageSize', courseParams.pageSize.toString())
-  params.append('sort', courseParams.sort)
+  const params = new URLSearchParams();
+  params.append("pageIndex", courseParams.pageIndex.toString());
+  params.append("pageSize", courseParams.pageSize.toString());
+  params.append("sort", courseParams.sort);
   if (courseParams.category)
-    params.append('categoryId', courseParams.category.toString())
-  if (courseParams.search) params.append('search', courseParams.search)
-  return params
+    params.append("categoryId", courseParams.category.toString());
+  if (courseParams.search) params.append("search", courseParams.search);
+  return params;
 }
 
 export const getCoursesAsync = createAsyncThunk<
   PaginatedCourse | undefined,
   void,
   { state: RootState }
->('course/getCoursesAsync', async (_, thunkAPI) => {
-  const params = getAxiosParams(thunkAPI.getState().course.courseParams)
+>("course/getCoursesAsync", async (_, thunkAPI) => {
+  const params = getAxiosParams(thunkAPI.getState().course.courseParams);
   try {
-    const response = await agent.Courses.list(params)
-    return response
-  } catch (err) {
-    console.log(err)
+    const response = await agent.Courses.list(params);
+    const paged = {
+      pageIndex: response.pageIndex,
+      pageSize: response.pageSize,
+      totalCount: response.count,
+    };
+    thunkAPI.dispatch(setPagination(paged));
+    return response;
+  } catch (err: any) {
+    console.log(err);
   }
-})
+});
 
 export const getCourseAsync = createAsyncThunk<
   Course | undefined,
   { courseId: string }
->('course/getCourseAsync', async ({ courseId }, thunkAPI) => {
+>("course/getCourseAsync", async ({ courseId }, thunkAPI) => {
   try {
-    return await agent.Courses.getById(courseId)
-  } catch (err) {
-    console.log(err)
+    return await agent.Courses.getById(courseId);
+  } catch (err: any) {
+    console.log(err);
   }
-})
+});
 
 function getParams() {
   return {
     pageIndex: 1,
     pageSize: 3,
-    sort: 'title',
-  }
+    sort: "title",
+  };
 }
+
 
 export const courseSlice = createSlice({
   name: 'course',
@@ -70,10 +79,19 @@ export const courseSlice = createSlice({
         pageIndex: 1,
       }
     },
+    setPageNumber: (state, action) => {
+      state.coursesLoaded = false;
+      state.courseParams = { ...state.courseParams, ...action.payload };
+    },
     setPagination: (state, action) => {
-      state.pagination = action.payload
+      state.pagination = action.payload;
+    },
+    resetCourseParams: (state) => {
+      state.courseParams = getParams();
     },
   },
+
+  
   extraReducers: (builder) => {
     builder.addCase(getCoursesAsync.pending, (state) => {
       state.status = 'pendingCourses'
@@ -101,7 +119,13 @@ export const courseSlice = createSlice({
 })
 
 export const coursesSelector = coursesAdapter.getSelectors(
-  (state: RootState) => state.course,
-)
+  (state: RootState) => state.course
+);
 
-export const { setCourseParams } = courseSlice.actions
+export const {
+  setPagination,
+  setPageNumber,
+  setCourseParams,
+  resetCourseParams,
+
+} = courseSlice.actions;
