@@ -2,7 +2,7 @@ import React, { ChangeEvent, SyntheticEvent, useState } from "react";
 import * as FaIcons from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import Logo from "../assets/logo.png";
+import Logo from "../assets/logo.jpg";
 import { removeBasket } from "../redux/slice/basketSlice";
 import { setCourseParams } from "../redux/slice/courseSlice";
 import { signOut } from "../redux/slice/userSlice";
