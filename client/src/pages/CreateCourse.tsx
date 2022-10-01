@@ -182,6 +182,7 @@ const CreateCourse = () => {
             <Option value="Beginner">Beginner</Option>
             <Option value="Intermediate">Intermediate</Option>
             <Option value="Advanced">Advanced</Option>
+            <Option value="Advanced">Pro</Option>
           </Select>
         </Form.Item>
         <Form.Item
@@ -200,9 +201,13 @@ const CreateCourse = () => {
             onChange={(value) => setValues({ ...values, language: value })}
           >
             <Option value="English">English</Option>
+            <Option value="Japanese">French</Option>
+            <Option value="Japanese">German</Option>
             <Option value="Spanish">Spanish</Option>
             <Option value="Hindi">Hindi</Option>
             <Option value="Japanese">Japanese</Option>
+            <Option value="Japanese">Swedish</Option>
+            
           </Select>
         </Form.Item>
         <Form.Item>

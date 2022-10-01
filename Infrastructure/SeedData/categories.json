@@ -22,5 +22,9 @@
   {
     "Id": 6,
     "Name": "Business"
+  },
+  {
+    "Id": 7,
+    "Name": "Gaming"
   }
 ]
